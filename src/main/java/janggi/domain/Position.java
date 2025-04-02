@@ -4,8 +4,8 @@ import java.util.function.Predicate;
 
 public class Position {
 
-    private static final Predicate<Integer> X_RANGE = x -> 1 <= x && x <= 9;
-    private static final Predicate<Integer> Y_RANGE = y -> 1 <= y && y <= 10;
+    private static final Predicate<Integer> IS_VALID_X = x -> 1 <= x && x <= 9;
+    private static final Predicate<Integer> IS_VALID_Y = y -> 1 <= y && y <= 10;
 
     private int x;
     private int y;
@@ -17,7 +17,7 @@ public class Position {
     }
 
     private void validatePositionRange(int x, int y) {
-        boolean isValidatePosition = X_RANGE.test(x) && Y_RANGE.test(y);
+        boolean isValidatePosition = IS_VALID_X.test(x) && IS_VALID_Y.test(y);
 
         if (!isValidatePosition) {
             throw new IllegalArgumentException("[ERROR] 장기판을 벗어난 좌표입니다.");
