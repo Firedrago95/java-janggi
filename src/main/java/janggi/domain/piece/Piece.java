@@ -16,6 +16,14 @@ public class Piece {
         this.moveBehavior = moveBehavior;
     }
 
+    public PieceType getPieceType() {
+        return pieceType;
+    }
+
+    public Side getSide() {
+        return side;
+    }
+
     @Override
     public String toString() {
         return "Piece{" +

@@ -1,9 +1,8 @@
-package janggi.domain.board;
+package janggi.domain.board.initiator;
 
 import janggi.ReplaceUnderBar;
 import janggi.domain.PieceSetup;
 import janggi.domain.Position;
-import janggi.domain.board.initiator.BoardInitiator;
 import janggi.domain.moveStrategy.CannonMoveBehavior;
 import janggi.domain.moveStrategy.ElephantMoveBehavior;
 import janggi.domain.moveStrategy.GuardMoveBehavior;

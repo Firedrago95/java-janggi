@@ -1,9 +1,7 @@
-package janggi.domain.board;
+package janggi.domain.board.initiator;
 
 import janggi.ReplaceUnderBar;
 import janggi.domain.Position;
-import janggi.domain.board.initiator.ChoRightSetupInitiator;
-import janggi.domain.board.initiator.SetupInitiator;
 import janggi.domain.moveStrategy.ElephantMoveBehavior;
 import janggi.domain.moveStrategy.KnightMoveBehavior;
 import janggi.domain.piece.Piece;

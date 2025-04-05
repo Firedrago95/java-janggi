@@ -1,17 +1,7 @@
-package janggi.domain.board;
+package janggi.domain.board.initiator;
 
 import janggi.ReplaceUnderBar;
 import janggi.domain.PieceSetup;
-import janggi.domain.board.initiator.ChoInnerSetupInitiator;
-import janggi.domain.board.initiator.ChoLeftSetupInitiator;
-import janggi.domain.board.initiator.ChoOuterSetupInitiator;
-import janggi.domain.board.initiator.ChoRightSetupInitiator;
-import janggi.domain.board.initiator.HanInnerSetupInitiator;
-import janggi.domain.board.initiator.HanLeftSetupInitiator;
-import janggi.domain.board.initiator.HanOuterSetupInitiator;
-import janggi.domain.board.initiator.HanRightSetupInitiator;
-import janggi.domain.board.initiator.SetupInitiator;
-import janggi.domain.board.initiator.SetupInitiatorFactory;
 import janggi.domain.piece.Side;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

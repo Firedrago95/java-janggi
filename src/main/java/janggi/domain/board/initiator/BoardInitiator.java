@@ -16,18 +16,18 @@ import java.util.Map;
 
 public class BoardInitiator {
 
-    private SetupInitiator choSetupInitiator;
     private SetupInitiator hanSetupInitiator;
+    private SetupInitiator choSetupInitiator;
 
-    public BoardInitiator(PieceSetup choPieceSetup, PieceSetup hanPieceSetup) {
-        this.choSetupInitiator = SetupInitiatorFactory.createSetupInitiator(Side.CHO, choPieceSetup);
+    public BoardInitiator(PieceSetup hanPieceSetup, PieceSetup choPieceSetup) {
         this.hanSetupInitiator = SetupInitiatorFactory.createSetupInitiator(Side.HAN, hanPieceSetup);
+        this.choSetupInitiator = SetupInitiatorFactory.createSetupInitiator(Side.CHO, choPieceSetup);
     }
 
     public Map<Position, Piece> generateInitialPieces() {
         Map<Position, Piece> initialPieces = generateFixedInitialPieces();
-        initialPieces.putAll(choSetupInitiator.generateInitialPieces());
         initialPieces.putAll(hanSetupInitiator.generateInitialPieces());
+        initialPieces.putAll(choSetupInitiator.generateInitialPieces());
         return initialPieces;
     }
 
