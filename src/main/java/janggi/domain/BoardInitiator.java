@@ -51,7 +51,6 @@ public class BoardInitiator {
         }
         if (choPieceSetup == PieceSetup.INNER_SETUP) {
             fixedInitialPieces.putAll(generateChoInnerSetupPiece());
-            return;
         }
         fixedInitialPieces.putAll(generateChoOuterSetupPiece());
     }
@@ -62,7 +61,7 @@ public class BoardInitiator {
         fixedPieces.put(new Position(4, 10), new Piece(Side.CHO, PieceType.GUARD, new GuardMoveBehavior()));
         fixedPieces.put(new Position(6, 10), new Piece(Side.CHO, PieceType.GUARD, new GuardMoveBehavior()));
         fixedPieces.put(new Position(9, 10), new Piece(Side.CHO, PieceType.ROOK, new RookMoveBehavior()));
-        fixedPieces.put(new Position(5, 9), new Piece(Side.CHO, PieceType.KING, new KnightMoveBehavior()));
+        fixedPieces.put(new Position(5, 9), new Piece(Side.CHO, PieceType.KING, new KingMoveBehavior()));
         fixedPieces.put(new Position(2, 8), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior()));
         fixedPieces.put(new Position(8, 8), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior()));
         fixedPieces.put(new Position(1, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()));
