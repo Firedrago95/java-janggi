@@ -1,6 +1,9 @@
-package janggi.domain;
+package janggi.domain.board;
 
 import janggi.ReplaceUnderBar;
+import janggi.domain.PieceSetup;
+import janggi.domain.Position;
+import janggi.domain.board.initiator.BoardInitiator;
 import janggi.domain.moveStrategy.CannonMoveBehavior;
 import janggi.domain.moveStrategy.ElephantMoveBehavior;
 import janggi.domain.moveStrategy.GuardMoveBehavior;
@@ -19,14 +22,17 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ReplaceUnderBar
-class BoardInitiatorTest {
+class BoardSetupInitiatorTest {
 
-    private BoardInitiator boardInitiator = new BoardInitiator();
+    private BoardInitiator boardInitiator;
 
     @Test
     void 왼상차림_기물들을_생성한다() {
+        // given
+        boardInitiator = new BoardInitiator(PieceSetup.LEFT_SETUP, PieceSetup.LEFT_SETUP);
+
         // when
-        Map<Position, Piece> initialPieces = boardInitiator.generateInitialPieces(PieceSetup.LEFT_SETUP, PieceSetup.LEFT_SETUP);
+        Map<Position, Piece> initialPieces = boardInitiator.generateInitialPieces();
 
         // then
         Map<Position, Piece> fixedPieces = getFixedPieces();
@@ -44,7 +50,11 @@ class BoardInitiatorTest {
 
     @Test
     void 오른상차림_기물을_생성한다() {
-        Map<Position, Piece> initialPieces = boardInitiator.generateInitialPieces(PieceSetup.RIGHT_SETUP, PieceSetup.RIGHT_SETUP);
+        // given
+        boardInitiator = new BoardInitiator(PieceSetup.RIGHT_SETUP, PieceSetup.RIGHT_SETUP);
+
+        // when
+        Map<Position, Piece> initialPieces = boardInitiator.generateInitialPieces();
 
         // then
         Map<Position, Piece> fixedPieces = getFixedPieces();
@@ -62,7 +72,11 @@ class BoardInitiatorTest {
 
     @Test
     void 바깥상차림_기물을_생성한다() {
-        Map<Position, Piece> initialPieces = boardInitiator.generateInitialPieces(PieceSetup.OUTER_SETUP, PieceSetup.OUTER_SETUP);
+        // given
+        boardInitiator = new BoardInitiator(PieceSetup.OUTER_SETUP, PieceSetup.OUTER_SETUP);
+
+        // when
+        Map<Position, Piece> initialPieces = boardInitiator.generateInitialPieces();
 
         // then
         Map<Position, Piece> fixedPieces = getFixedPieces();
@@ -80,7 +94,11 @@ class BoardInitiatorTest {
 
     @Test
     void 안상차림_기물을_생성한다() {
-        Map<Position, Piece> initialPieces = boardInitiator.generateInitialPieces(PieceSetup.INNER_SETUP, PieceSetup.INNER_SETUP);
+        // given
+        boardInitiator = new BoardInitiator(PieceSetup.INNER_SETUP, PieceSetup.INNER_SETUP);
+
+        // when
+        Map<Position, Piece> initialPieces = boardInitiator.generateInitialPieces();
 
         // then
         Map<Position, Piece> fixedPieces = getFixedPieces();
@@ -102,7 +120,7 @@ class BoardInitiatorTest {
         fixedPieces.put(new Position(4,10), new Piece(Side.CHO, PieceType.GUARD, new GuardMoveBehavior()));
         fixedPieces.put(new Position(6,10), new Piece(Side.CHO, PieceType.GUARD, new GuardMoveBehavior()));
         fixedPieces.put(new Position(9,10), new Piece(Side.CHO, PieceType.ROOK, new RookMoveBehavior()));
-        fixedPieces.put(new Position(5,9), new Piece(Side.CHO, PieceType.KING, new KnightMoveBehavior()));
+        fixedPieces.put(new Position(5,9), new Piece(Side.CHO, PieceType.KING, new KingMoveBehavior()));
         fixedPieces.put(new Position(2,8), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior()));
         fixedPieces.put(new Position(8,8), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior()));
         fixedPieces.put(new Position(1,7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()));
