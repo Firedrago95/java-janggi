@@ -1,5 +1,6 @@
 package janggi.domain;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public class Position {
@@ -22,5 +23,24 @@ public class Position {
         if (!isValidatePosition) {
             throw new IllegalArgumentException("[ERROR] 장기판을 벗어난 좌표입니다.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+            "x=" + x +
+            ", y=" + y +
+            '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Position position)) return false;
+        return x == position.x && y == position.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

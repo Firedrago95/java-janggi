@@ -13,6 +13,7 @@ class PositionTest {
     @ParameterizedTest
     @CsvSource(value = {"0, 5", "10, 5", "5, 0", "5, 11"})
     void 장기판_9x10을_벗어난_좌표는_예외를_발생시킨다(int x, int y) {
+        // when & then
         assertThatThrownBy(() -> new Position(x, y))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("[ERROR] 장기판을 벗어난 좌표입니다.");
@@ -21,6 +22,7 @@ class PositionTest {
     @ParameterizedTest
     @CsvSource(value = {"1, 5", "9, 5", "5, 1", "5, 10"})
     void 장기판_9x10내의_좌표는_예외를_발생하지_않는다(int x, int y) {
+        // when & then
         assertThatCode(() -> new Position(x, y)).doesNotThrowAnyException();
     }
 }
