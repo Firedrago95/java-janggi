@@ -7,5 +7,5 @@ import java.util.Map;
 
 public interface SetupInitiator {
 
-    public Map<Position, Piece> generateInitialPieces();
+    Map<Position, Piece> generateInitialPieces();
 }

@@ -13,28 +13,20 @@ public class SetupInitiatorFactory {
     }
 
     private static SetupInitiator createChoSetupInitiator(PieceSetup pieceSetup) {
-        if (pieceSetup == PieceSetup.RIGHT_SETUP) {
-            return new ChoRightSetupInitiator();
-        }
-        if (pieceSetup == PieceSetup.LEFT_SETUP) {
-            return new ChoLeftSetupInitiator();
-        }
-        if (pieceSetup == PieceSetup.INNER_SETUP) {
-            return new ChoInnerSetupInitiator();
-        }
-        return new ChoOuterSetupInitiator();
+        return switch (pieceSetup) {
+            case RIGHT_SETUP -> new ChoRightSetupInitiator();
+            case LEFT_SETUP -> new ChoLeftSetupInitiator();
+            case INNER_SETUP -> new ChoInnerSetupInitiator();
+            case OUTER_SETUP -> new ChoOuterSetupInitiator();
+        };
     }
 
     private static SetupInitiator createHanSetupInitiator(PieceSetup pieceSetup) {
-        if (pieceSetup == PieceSetup.RIGHT_SETUP) {
-            return new HanRightSetupInitiator();
-        }
-        if (pieceSetup == PieceSetup.LEFT_SETUP) {
-            return new HanLeftSetupInitiator();
-        }
-        if (pieceSetup == PieceSetup.INNER_SETUP) {
-            return new HanInnerSetupInitiator();
-        }
-        return new HanOuterSetupInitiator();
+        return switch (pieceSetup) {
+            case RIGHT_SETUP -> new HanRightSetupInitiator();
+            case LEFT_SETUP -> new HanLeftSetupInitiator();
+            case INNER_SETUP -> new HanInnerSetupInitiator();
+            case OUTER_SETUP -> new HanOuterSetupInitiator();
+        };
     }
 }
