@@ -9,9 +9,9 @@ import janggi.domain.piece.PieceType;
 import janggi.domain.piece.Side;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.Map;
 
+import static janggi.domain.board.initiator.TextFixture.getHanFixedPieces;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ReplaceUnderBar
@@ -25,7 +25,7 @@ class HanInnerSetupInitiatorTest {
         Map<Position, Piece> hanLeftSetupPieces = hanInnerSetupInitiator.generateInitialPieces();
 
         // then
-        Map<Position, Piece> expected = new HashMap<>();
+        Map<Position, Piece> expected = getHanFixedPieces();
         expected.put(new Position(2,1), new Piece(Side.HAN, PieceType.KNIGHT, new KnightMoveBehavior()));
         expected.put(new Position(3,1), new Piece(Side.HAN, PieceType.ELEPHANT, new ElephantMoveBehavior()));
         expected.put(new Position(7,1), new Piece(Side.HAN, PieceType.ELEPHANT, new ElephantMoveBehavior()));

@@ -7,14 +7,13 @@ import janggi.domain.piece.Piece;
 import janggi.domain.piece.PieceType;
 import janggi.domain.piece.Side;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class HanLeftSetupInitiator implements SetupInitiator{
 
     @Override
     public Map<Position, Piece> generateInitialPieces() {
-        Map<Position, Piece> hanLeftSetupPieces = new HashMap<>();
+        Map<Position, Piece> hanLeftSetupPieces = FixedPiecesGenerator.generateHanFixedInitialPieces();
         hanLeftSetupPieces.put(new Position(2, 1), new Piece(Side.HAN, PieceType.ELEPHANT, new ElephantMoveBehavior()));
         hanLeftSetupPieces.put(new Position(3, 1), new Piece(Side.HAN, PieceType.KNIGHT, new KnightMoveBehavior()));
         hanLeftSetupPieces.put(new Position(7, 1), new Piece(Side.HAN, PieceType.ELEPHANT, new ElephantMoveBehavior()));

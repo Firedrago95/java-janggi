@@ -7,14 +7,13 @@ import janggi.domain.piece.Piece;
 import janggi.domain.piece.PieceType;
 import janggi.domain.piece.Side;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class ChoRightSetupInitiator implements SetupInitiator{
 
     @Override
     public Map<Position, Piece> generateInitialPieces() {
-        Map<Position, Piece> choRightSetup = new HashMap<>();
+        Map<Position, Piece> choRightSetup = FixedPiecesGenerator.generateChoFixedInitialPieces();
         choRightSetup.put(new Position(2, 10), new Piece(Side.CHO, PieceType.KNIGHT, new KnightMoveBehavior()));
         choRightSetup.put(new Position(3, 10), new Piece(Side.CHO, PieceType.ELEPHANT, new ElephantMoveBehavior()));
         choRightSetup.put(new Position(7, 10), new Piece(Side.CHO, PieceType.KNIGHT, new KnightMoveBehavior()));
