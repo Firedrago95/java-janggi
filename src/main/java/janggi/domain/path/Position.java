@@ -1,4 +1,4 @@
-package janggi.domain;
+package janggi.domain.path;
 
 import java.util.Objects;
 import java.util.function.Predicate;
@@ -23,6 +23,34 @@ public class Position {
         if (!isValidatePosition) {
             throw new IllegalArgumentException("[ERROR] 장기판을 벗어난 좌표입니다.");
         }
+    }
+
+    public boolean isVerticalMove(Position destination) {
+        return this.x == destination.x && this.y != destination.y;
+    }
+
+    public boolean isHorizontalMove(Position destination) {
+        return this.x != destination.x && this.y == destination.y;
+    }
+
+    public boolean isLinearMove(Position destination) {
+        return isHorizontalMove(destination) || isVerticalMove(destination);
+    }
+
+    public int calculateXDistance(Position destination) {
+        return destination.x - this.x;
+    }
+
+    public int calculateYDistance(Position destination) {
+        return destination.y - this.y;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
     }
 
     @Override

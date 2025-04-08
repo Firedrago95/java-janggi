@@ -2,7 +2,7 @@ package janggi.domain.board.initiator;
 
 import janggi.ReplaceUnderBar;
 import janggi.domain.PieceSetup;
-import janggi.domain.Position;
+import janggi.domain.path.Position;
 import janggi.domain.moveStrategy.ElephantMoveBehavior;
 import janggi.domain.moveStrategy.KnightMoveBehavior;
 import janggi.domain.piece.Piece;
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static janggi.domain.board.initiator.TextFixture.getFixedPieces;
+import static janggi.JanggiTestFixture.getFixedPieces;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ReplaceUnderBar

@@ -1,6 +1,6 @@
-package janggi.domain.board.initiator;
+package janggi;
 
-import janggi.domain.Position;
+import janggi.domain.path.Position;
 import janggi.domain.moveStrategy.CannonMoveBehavior;
 import janggi.domain.moveStrategy.GuardMoveBehavior;
 import janggi.domain.moveStrategy.KingMoveBehavior;
@@ -13,7 +13,7 @@ import janggi.domain.piece.Side;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TextFixture {
+public class JanggiTestFixture {
 
     public static Map<Position, Piece> getFixedPieces() {
         Map<Position, Piece> fixedPieces = new HashMap<>();

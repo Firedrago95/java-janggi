@@ -20,6 +20,14 @@ public class Piece {
         return pieceType;
     }
 
+    public boolean isCannon() {
+        return pieceType == PieceType.CANNON;
+    }
+
+    public boolean isEnemy(Side pieceSide) {
+        return this.side != pieceSide;
+    }
+
     public Side getSide() {
         return side;
     }

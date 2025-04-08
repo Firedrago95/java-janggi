@@ -1,6 +1,6 @@
 package janggi.domain.board.initiator;
 
-import janggi.domain.Position;
+import janggi.domain.path.Position;
 import janggi.domain.moveStrategy.CannonMoveBehavior;
 import janggi.domain.moveStrategy.GuardMoveBehavior;
 import janggi.domain.moveStrategy.KingMoveBehavior;

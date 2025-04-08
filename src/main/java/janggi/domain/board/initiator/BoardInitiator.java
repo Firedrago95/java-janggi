@@ -1,7 +1,7 @@
 package janggi.domain.board.initiator;
 
 import janggi.domain.PieceSetup;
-import janggi.domain.Position;
+import janggi.domain.path.Position;
 import janggi.domain.piece.Piece;
 import janggi.domain.piece.Side;
 
