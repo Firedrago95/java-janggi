@@ -44,7 +44,6 @@ public class ElephantMoveBehavior implements MoveBehavior{
         );
     }
 
-
     private void validateLinearMove(Position start, Position destination) {
         int xDistance = Math.abs(start.calculateXDistance(destination));
         int yDistance = Math.abs(start.calculateYDistance(destination));
