@@ -15,6 +15,10 @@ public class JanggiController {
         this.board = new Board(boardInitiator.generateInitialPieces(), Side.CHO);
         OutputView.printBoard(board);
 
+        playGame();
+    }
+
+    private void playGame() {
         while(!board.isGameOver()) {
             Side turn = board.getTurn();
             computeException(() -> board.move(InputView.readStart(turn), InputView.readDestination(turn)));
