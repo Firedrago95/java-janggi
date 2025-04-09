@@ -68,4 +68,32 @@ class RookMoveBehaviorTest {
         // then
         assertThat(isMoveable).isFalse();
     }
+
+    @Test
+    void 목적지에_적_기물이_있는경우_이동할_수_있다() {
+        // given
+        Side cho = Side.CHO;
+        Position destination = new Position(1, 5);
+        Pieces pieceOnPath = new Pieces(
+            Map.of(
+                new Position(1, 5), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior())
+            )
+        );
+
+        // when & then
+        assertThat(rookMoveBehavior.canMove(pieceOnPath, destination, cho)).isTrue();
+    }
+
+    @Test
+    void 경로상에_기물이_없는_경우_이동할_수_있다() {
+        // given
+        Side cho = Side.CHO;
+        Position destination = new Position(1, 5);
+        Pieces pieceOnPath = new Pieces(
+            Map.of()
+        );
+
+        // when & then
+        assertThat(rookMoveBehavior.canMove(pieceOnPath, destination, cho)).isTrue();
+    }
 }
