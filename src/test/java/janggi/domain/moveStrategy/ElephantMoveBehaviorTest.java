@@ -79,7 +79,7 @@ class ElephantMoveBehaviorTest {
         Position destination = new Position(1, 5);
         Pieces pieceOnPath = new Pieces(
             Map.of(
-                new Position(1, 3), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior())
+                new Position(1, 3), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO))
             )
         );
 
@@ -97,7 +97,7 @@ class ElephantMoveBehaviorTest {
         Position destination = new Position(1, 5);
         Pieces pieceOnPath = new Pieces(
             Map.of(
-                new Position(1, 5), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior())
+                new Position(1, 5), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO))
             )
         );
 
@@ -115,7 +115,7 @@ class ElephantMoveBehaviorTest {
         Position destination = new Position(1, 5);
         Pieces pieceOnPath = new Pieces(
             Map.of(
-                new Position(1, 5), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior())
+                new Position(1, 5), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN))
             )
         );
 

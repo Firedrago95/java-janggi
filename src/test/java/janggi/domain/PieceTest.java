@@ -24,7 +24,7 @@ class PieceTest {
     void 기물이_포_인지_확인한다() {
         // given
         Piece choCannon = new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior());
-        Piece hanPawn = new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior());
+        Piece hanPawn = new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior((Side.HAN)));
 
         // when & then
         assertAll(

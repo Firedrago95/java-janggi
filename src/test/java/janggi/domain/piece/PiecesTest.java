@@ -26,7 +26,7 @@ class PiecesTest {
         );
         Pieces pawnPieceOnPath = new Pieces(
             Map.of(
-                new Position(1, 3), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior())
+                new Position(1, 3), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO))
             )
         );
 
@@ -47,7 +47,7 @@ class PiecesTest {
         );
         Pieces pawnPieceOnPath = new Pieces(
             Map.of(
-                new Position(1, 3), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()),
+                new Position(1, 3), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)),
                 new Position(1, 4), new Piece(Side.HAN, PieceType.ELEPHANT, new ElephantMoveBehavior())
             )
         );
@@ -65,7 +65,7 @@ class PiecesTest {
         Position destination = new Position(1, 5);
         Side pieceSide = Side.CHO;
         Pieces piecesOnPath = new Pieces(
-            Map.of(destination, new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior()))
+            Map.of(destination, new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN)))
         );
 
         // when & then
@@ -78,7 +78,7 @@ class PiecesTest {
         Position destination = new Position(1, 5);
         Side pieceSide = Side.CHO;
         Pieces piecesOnPath = new Pieces(
-            Map.of(destination, new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()))
+            Map.of(destination, new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)))
         );
 
         // when & then
@@ -91,7 +91,7 @@ class PiecesTest {
         Position destination = new Position(1, 5);
         Side pieceSide = Side.CHO;
         Pieces piecesOnPath = new Pieces(
-            Map.of(destination, new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()))
+            Map.of(destination, new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)))
         );
 
         // when & then

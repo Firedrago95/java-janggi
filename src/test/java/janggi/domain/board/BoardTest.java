@@ -32,7 +32,7 @@ class BoardTest {
 
         // then
         Pieces expected = new Pieces(Map.of(
-            new Position(1, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior())
+            new Position(1, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN))
         ));
         assertThat(piecesOnPath).isEqualTo(expected);
     }

@@ -24,11 +24,11 @@ public class FixedPiecesGenerator {
         fixedPieces.put(new Position(5, 9), new Piece(Side.CHO, PieceType.KING, new KingMoveBehavior()));
         fixedPieces.put(new Position(2, 8), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior()));
         fixedPieces.put(new Position(8, 8), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior()));
-        fixedPieces.put(new Position(1, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()));
-        fixedPieces.put(new Position(3, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()));
-        fixedPieces.put(new Position(5, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()));
-        fixedPieces.put(new Position(7, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()));
-        fixedPieces.put(new Position(9, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior()));
+        fixedPieces.put(new Position(1, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)));
+        fixedPieces.put(new Position(3, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)));
+        fixedPieces.put(new Position(5, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)));
+        fixedPieces.put(new Position(7, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)));
+        fixedPieces.put(new Position(9, 7), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)));
         return fixedPieces;
     }
 
@@ -41,11 +41,11 @@ public class FixedPiecesGenerator {
         fixedPieces.put(new Position(5, 2), new Piece(Side.HAN, PieceType.KING, new KingMoveBehavior()));
         fixedPieces.put(new Position(2, 3), new Piece(Side.HAN, PieceType.CANNON, new CannonMoveBehavior()));
         fixedPieces.put(new Position(8, 3), new Piece(Side.HAN, PieceType.CANNON, new CannonMoveBehavior()));
-        fixedPieces.put(new Position(1, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior()));
-        fixedPieces.put(new Position(3, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior()));
-        fixedPieces.put(new Position(5, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior()));
-        fixedPieces.put(new Position(7, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior()));
-        fixedPieces.put(new Position(9, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior()));
+        fixedPieces.put(new Position(1, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN)));
+        fixedPieces.put(new Position(3, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN)));
+        fixedPieces.put(new Position(5, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN)));
+        fixedPieces.put(new Position(7, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN)));
+        fixedPieces.put(new Position(9, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN)));
         return fixedPieces;
     }
 }

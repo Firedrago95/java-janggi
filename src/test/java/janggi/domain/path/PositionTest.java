@@ -57,4 +57,15 @@ class PositionTest {
         // when & then
         assertThat(start.isHorizontalMove(destination)).isEqualTo(isLinear);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"4,5,3,6,false", "4,5,3,5, true", "4,5,5,5,true", "4,5,4,6,true", "4,5,4,4,true"})
+    void 상하좌우_한칸_움직임을_검증한다(int startX, int startY, int destinationX, int destinationY, boolean isLinear) {
+        // given
+        Position start = new Position(startX, startY);
+        Position destination = new Position(destinationX, destinationY);
+
+        // when & then
+        assertThat(start.isOneStepMove(destination)).isEqualTo(isLinear);
+    }
 }

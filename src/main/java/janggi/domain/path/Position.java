@@ -45,6 +45,13 @@ public class Position {
         return destination.y - this.y;
     }
 
+    public boolean isOneStepMove(Position destination) {
+        int xDistance = Math.abs(calculateXDistance(destination));
+        int yDistance = Math.abs(calculateYDistance(destination));
+        return (xDistance == 1 && yDistance == 0)
+            || (xDistance == 0 && yDistance == 1);
+    }
+
     public int getY() {
         return y;
     }
