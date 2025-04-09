@@ -2,7 +2,6 @@ package janggi.controller;
 
 import janggi.domain.board.Board;
 import janggi.domain.board.initiator.BoardInitiator;
-import janggi.domain.path.Position;
 import janggi.domain.piece.Side;
 import janggi.view.InputView;
 import janggi.view.OutputView;
@@ -17,10 +16,20 @@ public class JanggiController {
         OutputView.printBoard(board);
 
         while(!board.isGameOver()) {
-            Position start = InputView.readStart();
-            Position destination = InputView.readDestination();
-            board.move(start, destination);
+            computeException(() -> board.move(InputView.readStart(), InputView.readDestination()));
             OutputView.printBoard(board);
+        }
+    }
+
+    private void computeException(Runnable runnable) {
+        boolean isException = true;
+        while (isException) {
+            try {
+                runnable.run();
+                isException = false;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
