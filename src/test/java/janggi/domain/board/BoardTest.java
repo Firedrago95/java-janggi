@@ -6,6 +6,7 @@ import janggi.domain.moveStrategy.PawnMoveBehavior;
 import janggi.domain.path.Position;
 import janggi.domain.piece.Piece;
 import janggi.domain.piece.PieceType;
+import janggi.domain.piece.Pieces;
 import janggi.domain.piece.Side;
 import org.junit.jupiter.api.Test;
 
@@ -27,12 +28,12 @@ class BoardTest {
         );
 
         // when
-        Map<Position, Piece> piecesOnPath = board.getPiecesOnPath(path);
+        Pieces piecesOnPath = board.getPiecesOnPath(path);
 
         // then
-        Map<Position, Piece> expected = Map.of(
+        Pieces expected = new Pieces(Map.of(
             new Position(1, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior())
-        );
+        ));
         assertThat(piecesOnPath).isEqualTo(expected);
     }
 }

@@ -1,12 +1,11 @@
 package janggi.domain.moveStrategy;
 
 import janggi.domain.path.Position;
-import janggi.domain.piece.Piece;
+import janggi.domain.piece.Pieces;
 import janggi.domain.piece.Side;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CannonMoveBehavior implements MoveBehavior {
 
@@ -19,25 +18,10 @@ public class CannonMoveBehavior implements MoveBehavior {
         return positions;
     }
 
-    public boolean canMove(Map<Position, Piece> piecesOnPath, Position destination, Side pieceSide) {
-        if (!hasExactlyOnePieceOnPath(piecesOnPath)) return false;
-        if (pathHasCannon(piecesOnPath)) return false;
-        return isEnemyOnDestination(piecesOnPath, destination, pieceSide);
-    }
-
-    private static boolean isEnemyOnDestination(Map<Position, Piece> piecesOnPath, Position destination, Side pieceSide) {
-        Piece pieceOnDestination = piecesOnPath.get(destination);
-        return piecesOnPath.containsKey(destination)
-            && pieceOnDestination.isEnemy(pieceSide);
-    }
-
-    private static boolean pathHasCannon(Map<Position, Piece> piecesOnPath) {
-        return piecesOnPath.values().stream()
-            .anyMatch(Piece::isCannon);
-    }
-
-    private static boolean hasExactlyOnePieceOnPath(Map<Position, Piece> piecesOnPath) {
-        return piecesOnPath.size() == 1;
+    public boolean canMove(Pieces piecesOnPath, Position destination, Side pieceSide) {
+        if (!piecesOnPath.hasExactlyOnePiece()) return false;
+        if (piecesOnPath.hasCannon()) return false;
+        return piecesOnPath.isEnemyOnDestination(destination, pieceSide);
     }
 
     private void validateLinearMove(Position start, Position destination) {

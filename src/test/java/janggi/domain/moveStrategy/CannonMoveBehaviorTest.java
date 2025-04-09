@@ -4,6 +4,7 @@ import janggi.ReplaceUnderBar;
 import janggi.domain.path.Position;
 import janggi.domain.piece.Piece;
 import janggi.domain.piece.PieceType;
+import janggi.domain.piece.Pieces;
 import janggi.domain.piece.Side;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -55,8 +56,11 @@ class CannonMoveBehaviorTest {
         // given
         Side pieceSide = Side.HAN;
         Position destination = new Position(1, 6);
-        Map<Position, Piece> pieceOnPath = Map.of(
-            new Position(1, 3), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior()));
+        Pieces pieceOnPath = new Pieces(
+            Map.of(
+                new Position(1, 3), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior())
+            )
+        );
 
         // when
         boolean isMoveable = cannonMoveBehavior.canMove(pieceOnPath, destination, pieceSide);
@@ -70,9 +74,11 @@ class CannonMoveBehaviorTest {
         // given
         Side pieceSide = Side.HAN;
         Position destination = new Position(1, 6);
-        Map<Position, Piece> pieceOnPath = Map.of(
-            new Position(1, 3), new Piece(Side.CHO, PieceType.ROOK, new RookMoveBehavior()),
-            new Position(1, 5), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior())
+        Pieces pieceOnPath = new Pieces(
+            Map.of(
+                new Position(1, 3), new Piece(Side.CHO, PieceType.ROOK, new RookMoveBehavior()),
+                new Position(1, 5), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior())
+            )
         );
 
         // when
@@ -87,8 +93,10 @@ class CannonMoveBehaviorTest {
         // given
         Side pieceSide = Side.HAN;
         Position destination = new Position(1, 6);
-        Map<Position, Piece> pieceOnPath = Map.of(
-            new Position(1, 6), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior())
+        Pieces pieceOnPath = new Pieces(
+            Map.of(
+                new Position(1, 6), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior())
+            )
         );
 
         // when
@@ -103,8 +111,10 @@ class CannonMoveBehaviorTest {
         // given
         Side pieceSide = Side.HAN;
         Position destination = new Position(1, 6);
-        Map<Position, Piece> pieceOnPath = Map.of(
-            new Position(1, 6), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior())
+        Pieces pieceOnPath = new Pieces(
+            Map.of(
+                new Position(1, 6), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior())
+            )
         );
 
         // when
@@ -119,8 +129,10 @@ class CannonMoveBehaviorTest {
         // given
         Side pieceSide = Side.HAN;
         Position destination = new Position(1, 6);
-        Map<Position, Piece> pieceOnPath = Map.of(
-            new Position(1, 6), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior())
+        Pieces pieceOnPath = new Pieces(
+            Map.of(
+                new Position(1, 6), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior())
+            )
         );
 
         // when
