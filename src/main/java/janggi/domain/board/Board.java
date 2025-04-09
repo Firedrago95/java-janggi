@@ -22,8 +22,7 @@ public class Board {
     public void move(Position start, Position destination) {
         Piece movingPiece = findMovingPiece(start);
         movingPiece.validateTurn(turn);
-        List<Position> path = movingPiece.getPath(start, destination);
-        Pieces piecesOnPath = getPiecesOnPath(path);
+        Pieces piecesOnPath = getPiecesOnPath(movingPiece.getPath(start, destination));
         validateMoveable(destination, movingPiece, piecesOnPath);
         movePieceToDestination(start, destination, movingPiece);
         turn = turn.opposite();
@@ -50,7 +49,7 @@ public class Board {
 
     public boolean isGameOver() {
         int kingCount = (int) pieces.values().stream()
-            .filter(piece -> piece.isKing())
+            .filter(Piece::isKing)
             .count();
         return kingCount != 2;
     }
@@ -64,5 +63,9 @@ public class Board {
 
     public Map<Position, Piece> getPieces() {
         return pieces;
+    }
+
+    public Side getTurn() {
+        return turn;
     }
 }

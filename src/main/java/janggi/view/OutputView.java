@@ -32,6 +32,10 @@ public class OutputView {
         System.out.println("   1ㅤ2ㅤ3ㅤ4  5ㅤ6ㅤ7ㅤ8ㅤ9");
     }
 
+    public static void printWinner(Side turn) {
+        System.out.println(convertPrintFormat(turn) + " 승리");
+    }
+
     private static String convertPrintFormat(Piece piece) {
         if (piece == null) {
             return String.format(GRAY + "ㅁ" + EXIT);
@@ -47,5 +51,12 @@ public class OutputView {
             case PAWN -> String.format(color + "졸" + EXIT);
             case ROOK -> String.format(color + "차" + EXIT);
         };
+    }
+
+    private static String convertPrintFormat(Side turn) {
+        if (turn == Side.CHO) {
+            return "초나라";
+        }
+        return "한나라";
     }
 }

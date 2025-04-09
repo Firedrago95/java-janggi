@@ -19,6 +19,7 @@ public class JanggiController {
             computeException(() -> board.move(InputView.readStart(), InputView.readDestination()));
             OutputView.printBoard(board);
         }
+        OutputView.printWinner(board.getTurn());
     }
 
     private void computeException(Runnable runnable) {
