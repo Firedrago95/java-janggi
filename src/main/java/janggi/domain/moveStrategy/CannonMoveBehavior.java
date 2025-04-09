@@ -9,6 +9,7 @@ import java.util.List;
 
 public class CannonMoveBehavior implements MoveBehavior {
 
+    @Override
     public List<Position> getPath(Position start, Position destination) {
         validateLinearMove(start, destination);
 
@@ -18,6 +19,7 @@ public class CannonMoveBehavior implements MoveBehavior {
         return positions;
     }
 
+    @Override
     public boolean canMove(Pieces piecesOnPath, Position destination, Side pieceSide) {
         if (!piecesOnPath.hasExactlyOnePiece()) return false;
         if (piecesOnPath.hasCannon()) return false;

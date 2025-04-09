@@ -14,9 +14,16 @@ public class PawnMoveBehavior implements MoveBehavior{
         this.pieceSide = pieceSide;
     }
 
+    @Override
     public List<Position> getPath(Position start, Position destination) {
         validateOneStepMove(start, destination);
         return List.of(destination);
+    }
+
+    @Override
+    public boolean canMove(Pieces pieceOnPath, Position destination, Side cho) {
+        if (pieceOnPath.isAllyOnDestination(destination, cho)) return false;
+        return true;
     }
 
     private void validateOneStepMove(Position start, Position destination) {
@@ -29,11 +36,6 @@ public class PawnMoveBehavior implements MoveBehavior{
         if (pieceSide == Side.HAN && start.calculateYDistance(destination) == -1) {
             throw new IllegalArgumentException("졸은 뒤로 이동 할 수 없습니다.");
         }
-    }
-
-    public boolean canMove(Pieces pieceOnPath, Position destination, Side cho) {
-        if (pieceOnPath.isAllyOnDestination(destination, cho)) return false;
-        return true;
     }
 
     @Override

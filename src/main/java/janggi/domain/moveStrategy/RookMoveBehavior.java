@@ -9,6 +9,7 @@ import java.util.List;
 
 public class RookMoveBehavior implements MoveBehavior {
 
+    @Override
     public List<Position> getPath(Position start, Position destination) {
         validateLinearMove(start, destination);
 
@@ -18,6 +19,7 @@ public class RookMoveBehavior implements MoveBehavior {
         return positions;
     }
 
+    @Override
     public boolean canMove(Pieces pieceOnPath, Position destination, Side cho) {
         if (pieceOnPath.hasPieceExceptAt(destination)) return false;
         if (pieceOnPath.isAllyOnDestination(destination, cho)) return false;

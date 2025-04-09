@@ -1,7 +1,9 @@
 package janggi.domain.piece;
 
 import janggi.domain.moveStrategy.MoveBehavior;
+import janggi.domain.path.Position;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Piece {
@@ -16,6 +18,20 @@ public class Piece {
         this.moveBehavior = moveBehavior;
     }
 
+    public void validateTurn(Side turn) {
+        if (turn != side) {
+            throw new IllegalArgumentException("상대방 기물을 움직일 수 없습니다.");
+        }
+    }
+
+    public List<Position> getPath(Position start, Position destination) {
+        return moveBehavior.getPath(start, destination);
+    }
+
+    public boolean canMove(Pieces piecesOnPath, Position destination) {
+        return moveBehavior.canMove(piecesOnPath, destination, side);
+    }
+
     public PieceType getPieceType() {
         return pieceType;
     }
@@ -26,6 +42,10 @@ public class Piece {
 
     public boolean isEnemy(Side pieceSide) {
         return this.side != pieceSide;
+    }
+
+    public boolean isKing() {
+        return this.pieceType == PieceType.KING;
     }
 
     public Side getSide() {

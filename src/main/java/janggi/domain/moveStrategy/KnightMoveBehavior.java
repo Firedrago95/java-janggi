@@ -8,6 +8,7 @@ import java.util.List;
 
 public class KnightMoveBehavior implements MoveBehavior{
 
+    @Override
     public List<Position> getPath(Position start, Position destination) {
         validateLinearMove(start, destination);
 
@@ -22,6 +23,7 @@ public class KnightMoveBehavior implements MoveBehavior{
         return generateYFirstPath(start, xSignum, ySignum);
     }
 
+    @Override
     public boolean canMove(Pieces pieceOnPath, Position destination, Side cho) {
         if (pieceOnPath.hasPieceExceptAt(destination)) return false;
         if (pieceOnPath.isAllyOnDestination(destination, cho)) return false;
