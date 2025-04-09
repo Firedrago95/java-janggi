@@ -16,7 +16,8 @@ public class JanggiController {
         OutputView.printBoard(board);
 
         while(!board.isGameOver()) {
-            computeException(() -> board.move(InputView.readStart(), InputView.readDestination()));
+            Side turn = board.getTurn();
+            computeException(() -> board.move(InputView.readStart(turn), InputView.readDestination(turn)));
             OutputView.printBoard(board);
         }
         OutputView.printWinner(board.getTurn());

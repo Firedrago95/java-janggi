@@ -2,6 +2,7 @@ package janggi.view;
 
 import janggi.domain.PieceSetup;
 import janggi.domain.path.Position;
+import janggi.domain.piece.Side;
 
 import java.util.Scanner;
 
@@ -19,13 +20,13 @@ public class InputView {
         return choiceSetup();
     }
 
-    public static Position readStart() {
-        System.out.println("움직일 기물을 선택해주세요 예)2,3");
+    public static Position readStart(Side turn) {
+        System.out.println(convertToString(turn) + " 움직일 기물을 선택해주세요 예)2,3");
         return toPosition();
     }
 
-    public static Position readDestination() {
-        System.out.println("움직일 위치를 선택해주세요 예)3,4");
+    public static Position readDestination(Side turn) {
+        System.out.println(convertToString(turn) + " 움직일 위치를 선택해주세요 예)3,4");
         return toPosition();
     }
 
@@ -48,5 +49,12 @@ public class InputView {
                 "3. 안상차림%n" +
                 "4. 바깥상차림%n");
         return PieceSetup.findSetup(scanner.nextLine());
+    }
+
+    private static String convertToString(Side turn) {
+        if (turn == Side.CHO) {
+            return "초나라";
+        }
+        return "한나라";
     }
 }

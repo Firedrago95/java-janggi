@@ -33,7 +33,7 @@ public class OutputView {
     }
 
     public static void printWinner(Side turn) {
-        System.out.println(convertPrintFormat(turn) + " 승리");
+        System.out.println(convertPrintFormat(turn.opposite()) + " 승리");
     }
 
     private static String convertPrintFormat(Piece piece) {
