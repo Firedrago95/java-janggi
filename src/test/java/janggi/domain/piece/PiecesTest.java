@@ -3,6 +3,7 @@ package janggi.domain.piece;
 import janggi.ReplaceUnderBar;
 import janggi.domain.moveStrategy.CannonMoveBehavior;
 import janggi.domain.moveStrategy.ElephantMoveBehavior;
+import janggi.domain.moveStrategy.KingMoveBehavior;
 import janggi.domain.moveStrategy.PawnMoveBehavior;
 import janggi.domain.moveStrategy.RookMoveBehavior;
 import janggi.domain.path.Position;
@@ -41,7 +42,7 @@ class PiecesTest {
     @Test
     void 목적지가_아닌_경로상에_하나의_기물이_있는지_확인한다() {
         // given
-        Pieces cannonPieceOnPath = new Pieces(
+        Pieces rookOnDestination = new Pieces(
             Map.of(
                 new Position(1, 4), new Piece(Side.CHO, PieceType.ROOK, new RookMoveBehavior())
             )
@@ -56,22 +57,9 @@ class PiecesTest {
 
         // when & then
         assertAll(
-            () -> assertThat(cannonPieceOnPath.hasOnePieceOnPath(destination)).isFalse(),
-            () -> assertThat(pawnPieceOnPath.hasOnePieceOnPath(destination)).isTrue()
+            () -> assertThat(rookOnDestination.hasPieceExceptAt(destination)).isFalse(),
+            () -> assertThat(pawnPieceOnPath.hasPieceExceptAt(destination)).isTrue()
         );
-    }
-
-    @Test
-    void 목적지에_적_기물이_존재하는지_확인한댜() {
-        // given
-        Position destination = new Position(1, 5);
-        Side pieceSide = Side.CHO;
-        Pieces piecesOnPath = new Pieces(
-            Map.of(destination, new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN)))
-        );
-
-        // when & then
-        assertThat(piecesOnPath.hasEnemyOnDestination(destination, pieceSide)).isTrue();
     }
 
     @Test
@@ -91,12 +79,21 @@ class PiecesTest {
     void 해당_위치를_제외하고_기물이_존재하는지_확인한다() {
         // given
         Position destination = new Position(1, 5);
-        Side pieceSide = Side.CHO;
         Pieces piecesOnPath = new Pieces(
             Map.of(destination, new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)))
         );
+        Pieces piecesOnPathAndDestination = new Pieces(
+            Map.of(
+                destination, new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO)),
+                new Position(1, 4), new Piece(Side.CHO, PieceType.KING, new KingMoveBehavior())
+            )
+        );
+
 
         // when & then
-        assertThat(piecesOnPath.hasPieceExceptAt(destination)).isFalse();
+        assertAll(
+            () -> assertThat(piecesOnPath.hasPieceExceptAt(destination)).isFalse(),
+            () -> assertThat(piecesOnPathAndDestination.hasPieceExceptAt(destination)).isTrue()
+        );
     }
 }

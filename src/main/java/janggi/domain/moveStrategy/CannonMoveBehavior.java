@@ -21,11 +21,9 @@ public class CannonMoveBehavior implements MoveBehavior {
 
     @Override
     public boolean canMove(Pieces piecesOnPath, Position destination, Side pieceSide) {
-        if (!piecesOnPath.hasOnePieceOnPath(destination)) return false;
+        if (!piecesOnPath.hasPieceExceptAt(destination)) return false;
         if (piecesOnPath.hasCannon()) return false;
-        if (piecesOnPath.hasPieceOnDestination(destination)) {
-            return piecesOnPath.hasEnemyOnDestination(destination, pieceSide);
-        }
+        if (piecesOnPath.isAllyOnDestination(destination, pieceSide)) return false;
         return true;
     }
 
