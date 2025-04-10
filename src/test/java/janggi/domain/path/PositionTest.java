@@ -84,4 +84,34 @@ class PositionTest {
         // then
         assertThat(isInPalace).isEqualTo(expected);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+        "4,1,true","6,1,true","4,3,true","6,3,true","5,2,false",
+        "4,10,true","6,10,true","4,8,true","6,8,true","5,9,false"})
+    void 궁성_코너_인지_검증한다(int x, int y, boolean expected) {
+        // given
+        Position position = new Position(x, y);
+
+        // when
+        boolean isInPalace = position.isInPalaceCorner();
+
+        // then
+        assertThat(isInPalace).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+        "5,2,true","4,1,false","6,1,false","4,3,false","6,3,false",
+        "5,9,true","4,10,false","6,10,false","4,8,false","6,8,false"})
+    void 궁성_중앙_인지_검증한다(int x, int y, boolean expected) {
+        // given
+        Position position = new Position(x, y);
+
+        // when
+        boolean isInPalace = position.isInPalaceCenter();
+
+        // then
+        assertThat(isInPalace).isEqualTo(expected);
+    }
 }

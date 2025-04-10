@@ -1,12 +1,21 @@
 package janggi.domain.path;
 
 import java.util.Objects;
+import java.util.Set;
 import java.util.function.Predicate;
 
 public class Position {
 
     private static final Predicate<Integer> IS_VALID_X = x -> 1 <= x && x <= 9;
     private static final Predicate<Integer> IS_VALID_Y = y -> 1 <= y && y <= 10;
+    private static final Set<Position> PALACE_POINTS = Set.of(
+        new Position(4, 1), new Position(5, 1), new Position(6, 1),
+        new Position(4,2), new Position(5, 2), new Position(6,2),
+        new Position(4, 3), new Position(5,3), new Position(6, 3),
+        new Position(4, 8), new Position(5,8), new Position(6,8),
+        new Position(4,9), new Position(5, 9), new Position(6,9),
+        new Position(4,10), new Position(5, 10), new Position(6, 10)
+    );
 
     private int x;
     private int y;
@@ -53,7 +62,7 @@ public class Position {
     }
 
     public boolean isInPalace() {
-        return isInPalaceCenter() || isInPalaceCorner();
+        return PALACE_POINTS.contains(new Position(this.x, this.y));
     }
 
     public boolean isInPalaceCorner() {
@@ -63,6 +72,18 @@ public class Position {
 
     public boolean isInPalaceCenter() {
         return (this.x == 5) && (this.y == 2 || this.y == 9);
+    }
+
+    public boolean isInPalaceSideCenter() {
+        return isInPalace() && !isInPalaceCenter() && !isInPalaceCorner();
+    }
+
+    public boolean isOneStepMoveInPalace(Position destination) {
+        int xDistance = Math.abs(calculateXDistance(destination));
+        int yDistance = Math.abs(calculateYDistance(destination));
+        return (xDistance == 1 && yDistance == 0)
+            || (xDistance == 0 && yDistance == 1)
+            || (xDistance == 1 && yDistance == 1);
     }
 
     public int getY() {

@@ -11,7 +11,17 @@ public class KingMoveBehavior implements MoveBehavior {
     @Override
     public List<Position> getPath(Position start, Position destination) {
         validateDestinationInPalace(destination);
-        return List.of();
+        validateKingMove(start, destination);
+        return List.of(destination);
+    }
+
+    private static void validateKingMove(Position start, Position destination) {
+        if (start.isInPalaceSideCenter() && !start.isOneStepMove(destination)) {
+            throw new IllegalArgumentException("움직일 수 없는 위치 입니다.");
+        }
+        if (!start.isOneStepMoveInPalace(destination)) {
+            throw new IllegalArgumentException("움직일 수 없는 위치 입니다.");
+        }
     }
 
     private void validateDestinationInPalace(Position destination) {
@@ -22,7 +32,8 @@ public class KingMoveBehavior implements MoveBehavior {
 
     @Override
     public boolean canMove(Pieces piecesOnPath, Position destination, Side pieceSide) {
-        return false;
+        if (piecesOnPath.isAllyOnDestination(destination, pieceSide)) return false;
+        return true;
     }
 
     @Override
