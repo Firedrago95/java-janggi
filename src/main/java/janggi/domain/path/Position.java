@@ -62,7 +62,7 @@ public class Position {
     }
 
     public boolean isInPalaceCenter() {
-        return (this.x == 4) && (this.y == 2 || this.y == 9);
+        return (this.x == 5) && (this.y == 2 || this.y == 9);
     }
 
     public int getY() {
