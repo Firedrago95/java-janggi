@@ -6,6 +6,9 @@ import janggi.domain.moveStrategy.ElephantMoveBehavior;
 import janggi.domain.moveStrategy.KingMoveBehavior;
 import janggi.domain.moveStrategy.PawnMoveBehavior;
 import janggi.domain.moveStrategy.RookMoveBehavior;
+import janggi.domain.moveStrategy.palace.CannonPalaceMoveBehavior;
+import janggi.domain.moveStrategy.palace.CompositeMoveBehavior;
+import janggi.domain.moveStrategy.palace.PawnPalaceMoveBehavior;
 import janggi.domain.path.Position;
 import org.junit.jupiter.api.Test;
 
@@ -23,12 +26,12 @@ class PiecesTest {
         // given
         Pieces cannonPieceOnPath = new Pieces(
             Map.of(
-                new Position(1, 3), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior())
+                new Position(1, 3), new Piece(Side.CHO, PieceType.CANNON, new CompositeMoveBehavior(new CannonMoveBehavior(), new CannonPalaceMoveBehavior()))
             )
         );
         Pieces pawnPieceOnPath = new Pieces(
             Map.of(
-                new Position(1, 3), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO))
+                new Position(1, 3), new Piece(Side.CHO, PieceType.PAWN, new CompositeMoveBehavior(new PawnMoveBehavior(Side.CHO), new PawnPalaceMoveBehavior(Side.CHO)))
             )
         );
 

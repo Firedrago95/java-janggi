@@ -4,6 +4,8 @@ import janggi.JanggiTestFixture;
 import janggi.ReplaceUnderBar;
 import janggi.domain.moveStrategy.KingMoveBehavior;
 import janggi.domain.moveStrategy.PawnMoveBehavior;
+import janggi.domain.moveStrategy.palace.CompositeMoveBehavior;
+import janggi.domain.moveStrategy.palace.PawnPalaceMoveBehavior;
 import janggi.domain.path.Position;
 import janggi.domain.piece.Piece;
 import janggi.domain.piece.PieceType;
@@ -33,9 +35,14 @@ class BoardTest {
         Pieces piecesOnPath = board.getPiecesOnPath(path);
 
         // then
-        Pieces expected = new Pieces(Map.of(
-            new Position(1, 4), new Piece(Side.HAN, PieceType.PAWN, new PawnMoveBehavior(Side.HAN))
-        ));
+        Pieces expected = new Pieces(
+            Map.of(
+                new Position(1, 4),
+                new Piece(Side.HAN, PieceType.PAWN,
+                    new CompositeMoveBehavior(new PawnMoveBehavior(Side.HAN), new PawnPalaceMoveBehavior(Side.HAN))
+                )
+            )
+        );
         assertThat(piecesOnPath).isEqualTo(expected);
     }
 
