@@ -71,9 +71,10 @@ class PositionTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-        "4,1,true","6,1,true","5,2,true","4,3,true","6,3,true",
-        "4,10,true","6,10,true","5,9,true","4,8,true","6,8,true",
-        "4,9,false","6,9,false","3,10,false","4,2,false","6,2,false"})
+        "4,1,true","5,1,true","6,1,true","4,2,true","5,2,true",
+        "6,2,true","4,3,true","5,3,true","6,3,true","4,10,true",
+        "5,10,true","6,10,true","4,9,true","5,9,true","6,9,true",
+        "4,8,true","5,8,true","6,8,true"})
     void 궁성_안_위치인지_검증한다(int x, int y, boolean expected) {
         // given
         Position position = new Position(x, y);
