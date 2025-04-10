@@ -19,7 +19,7 @@ public class CompositeMoveBehavior implements MoveBehavior {
 
     @Override
     public List<Position> getPath(Position start, Position destination) {
-        if (start.isInPalaceCornerOrCenter() && destination.isInPalace() & start.isDiagonal(destination)) {
+        if (start.isInPalaceCornerOrCenter() && destination.isInPalace() && start.isDiagonal(destination)) {
             useMoveBehavior = moveBehaviors.getLast();
             return useMoveBehavior.getPath(start, destination);
         }

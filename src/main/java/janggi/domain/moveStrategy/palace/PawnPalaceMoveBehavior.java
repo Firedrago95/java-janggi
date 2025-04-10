@@ -39,7 +39,8 @@ public class PawnPalaceMoveBehavior implements MoveBehavior {
 
     @Override
     public boolean canMove(Pieces piecesOnPath, Position destination, Side pieceSide) {
-        return false;
+        if (piecesOnPath.isAllyOnDestination(destination, pieceSide)) return false;
+        return true;
     }
 
     @Override
