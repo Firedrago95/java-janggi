@@ -4,6 +4,7 @@ import janggi.ReplaceUnderBar;
 import janggi.domain.moveStrategy.CannonMoveBehavior;
 import janggi.domain.moveStrategy.ElephantMoveBehavior;
 import janggi.domain.moveStrategy.PawnMoveBehavior;
+import janggi.domain.moveStrategy.RookMoveBehavior;
 import janggi.domain.path.Position;
 import org.junit.jupiter.api.Test;
 
@@ -38,11 +39,11 @@ class PiecesTest {
     }
 
     @Test
-    void 경로상에_하나의_기물이_있는지_확인한다() {
+    void 목적지가_아닌_경로상에_하나의_기물이_있는지_확인한다() {
         // given
         Pieces cannonPieceOnPath = new Pieces(
             Map.of(
-                new Position(1, 3), new Piece(Side.CHO, PieceType.CANNON, new CannonMoveBehavior())
+                new Position(1, 4), new Piece(Side.CHO, PieceType.ROOK, new RookMoveBehavior())
             )
         );
         Pieces pawnPieceOnPath = new Pieces(
@@ -51,11 +52,12 @@ class PiecesTest {
                 new Position(1, 4), new Piece(Side.HAN, PieceType.ELEPHANT, new ElephantMoveBehavior())
             )
         );
+        Position destination = new Position(1, 4);
 
         // when & then
         assertAll(
-            () -> assertThat(cannonPieceOnPath.hasExactlyOnePiece()).isTrue(),
-            () -> assertThat(pawnPieceOnPath.hasExactlyOnePiece()).isFalse()
+            () -> assertThat(cannonPieceOnPath.hasOnePieceOnPath(destination)).isFalse(),
+            () -> assertThat(pawnPieceOnPath.hasOnePieceOnPath(destination)).isTrue()
         );
     }
 
@@ -69,7 +71,7 @@ class PiecesTest {
         );
 
         // when & then
-        assertThat(piecesOnPath.isEnemyOnDestination(destination, pieceSide)).isTrue();
+        assertThat(piecesOnPath.hasEnemyOnDestination(destination, pieceSide)).isTrue();
     }
 
     @Test

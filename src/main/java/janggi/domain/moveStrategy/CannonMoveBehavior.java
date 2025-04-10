@@ -21,9 +21,12 @@ public class CannonMoveBehavior implements MoveBehavior {
 
     @Override
     public boolean canMove(Pieces piecesOnPath, Position destination, Side pieceSide) {
-        if (!piecesOnPath.hasExactlyOnePiece()) return false;
+        if (!piecesOnPath.hasOnePieceOnPath(destination)) return false;
         if (piecesOnPath.hasCannon()) return false;
-        return piecesOnPath.isEnemyOnDestination(destination, pieceSide);
+        if (piecesOnPath.hasPieceOnDestination(destination)) {
+            return piecesOnPath.hasEnemyOnDestination(destination, pieceSide);
+        }
+        return true;
     }
 
     private void validateLinearMove(Position start, Position destination) {

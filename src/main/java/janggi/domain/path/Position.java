@@ -52,6 +52,19 @@ public class Position {
             || (xDistance == 0 && yDistance == 1);
     }
 
+    public boolean isInPalace() {
+        return isInPalaceCenter() || isInPalaceCorner();
+    }
+
+    public boolean isInPalaceCorner() {
+        return (this.x == 4 || this.x == 6)
+            && (this.y == 1 || this.y == 3 || this.y == 8 || this.y == 10);
+    }
+
+    public boolean isInPalaceCenter() {
+        return (this.x == 4) && (this.y == 2 || this.y == 9);
+    }
+
     public int getY() {
         return y;
     }

@@ -2,6 +2,7 @@ package janggi.domain.piece;
 
 import janggi.domain.path.Position;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Pieces {
@@ -17,12 +18,17 @@ public class Pieces {
             .anyMatch(Piece::isCannon);
     }
 
-    public boolean hasExactlyOnePiece() {
-        return pieces.size() == 1;
+    public boolean hasOnePieceOnPath(Position destination) {
+        HashMap<Position, Piece> copiedPieces = new HashMap<>(pieces);
+        copiedPieces.remove(destination);
+        return copiedPieces.size() == 1;
     }
 
-    public boolean isEnemyOnDestination(Position destination, Side pieceSide) {
-        if (!pieces.containsKey(destination)) return false;
+    public boolean hasPieceOnDestination(Position destination) {
+        return pieces.containsKey(destination);
+    }
+
+    public boolean hasEnemyOnDestination(Position destination, Side pieceSide) {
         Piece pieceOnDestination = pieces.get(destination);
         return pieceOnDestination.isEnemy(pieceSide);
     }

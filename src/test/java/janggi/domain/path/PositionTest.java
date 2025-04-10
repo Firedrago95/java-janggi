@@ -68,4 +68,17 @@ class PositionTest {
         // when & then
         assertThat(start.isOneStepMove(destination)).isEqualTo(isLinear);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {})
+    void 궁성_안_위치인지_검증한다(int x, int y, boolean expected) {
+        // given
+        Position position = new Position(x, y);
+
+        // when
+        boolean isInPalace = position.isInPalace();
+
+        // then
+        assertThat(isInPalace).isEqualTo(expected);
+    }
 }

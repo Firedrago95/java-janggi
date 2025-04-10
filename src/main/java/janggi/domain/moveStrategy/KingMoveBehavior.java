@@ -10,7 +10,14 @@ public class KingMoveBehavior implements MoveBehavior {
 
     @Override
     public List<Position> getPath(Position start, Position destination) {
+        validateDestinationInPalace(destination);
         return List.of();
+    }
+
+    private void validateDestinationInPalace(Position destination) {
+        if (!destination.isInPalace()) {
+            throw new IllegalArgumentException("왕은 궁성 밖으로 이동할 수 없습니다.");
+        }
     }
 
     @Override
