@@ -10,12 +10,30 @@ public class GuardMoveBehavior implements MoveBehavior{
 
     @Override
     public List<Position> getPath(Position start, Position destination) {
-        return List.of();
+        validateDestinationInPalace(destination);
+        validateKingMove(start, destination);
+        return List.of(destination);
+    }
+
+    private static void validateKingMove(Position start, Position destination) {
+        if (start.isInPalaceSideCenter() && !start.isOneStepMove(destination)) {
+            throw new IllegalArgumentException("움직일 수 없는 위치 입니다.");
+        }
+        if (!start.isOneStepMoveInPalace(destination)) {
+            throw new IllegalArgumentException("움직일 수 없는 위치 입니다.");
+        }
+    }
+
+    private void validateDestinationInPalace(Position destination) {
+        if (!destination.isInPalace()) {
+            throw new IllegalArgumentException("사는 궁성 밖으로 이동할 수 없습니다.");
+        }
     }
 
     @Override
     public boolean canMove(Pieces piecesOnPath, Position destination, Side pieceSide) {
-        return false;
+        if (piecesOnPath.isAllyOnDestination(destination, pieceSide)) return false;
+        return true;
     }
 
     @Override
