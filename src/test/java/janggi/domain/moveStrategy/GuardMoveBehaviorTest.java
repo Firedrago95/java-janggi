@@ -25,11 +25,11 @@ class GuardMoveBehaviorTest {
 
     public static Stream<Arguments> 사가_움직일_경로를_생성한다_테스트_케이스() {
         return Stream.of(
-            Arguments.of(new Position(5,2), new Position(4,1), List.of(new Position(4,1))),
-            Arguments.of(new Position(5,2), new Position(6,1), List.of(new Position(6,1))),
-            Arguments.of(new Position(4,1), new Position(5,2), List.of(new Position(5,2))),
-            Arguments.of(new Position(4,1), new Position(5,1), List.of(new Position(5,1))),
-            Arguments.of(new Position(4,1), new Position(4,2), List.of(new Position(4,2)))
+            Arguments.of(new Position(5, 2), new Position(4, 1), List.of(new Position(4, 1))),
+            Arguments.of(new Position(5, 2), new Position(6, 1), List.of(new Position(6, 1))),
+            Arguments.of(new Position(4, 1), new Position(5, 2), List.of(new Position(5, 2))),
+            Arguments.of(new Position(4, 1), new Position(5, 1), List.of(new Position(5, 1))),
+            Arguments.of(new Position(4, 1), new Position(4, 2), List.of(new Position(4, 2)))
         );
     }
 

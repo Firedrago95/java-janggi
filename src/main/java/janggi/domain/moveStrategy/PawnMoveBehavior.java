@@ -17,6 +17,7 @@ public class PawnMoveBehavior implements MoveBehavior{
     @Override
     public List<Position> getPath(Position start, Position destination) {
         validateOneStepMove(start, destination);
+        validatePalaceMove(start, destination);
         return List.of(destination);
     }
 
@@ -27,9 +28,23 @@ public class PawnMoveBehavior implements MoveBehavior{
     }
 
     private void validateOneStepMove(Position start, Position destination) {
-        if (!start.isOneStepMove(destination)) {
+        validateOneStep(start, destination);
+        validateSideMove(start, destination);
+    }
+
+    private static void validateOneStep(Position start, Position destination) {
+        if (!start.isInPalace() & !start.isOneStepMove(destination)) {
             throw new IllegalArgumentException("졸은 직진과 좌우로 한칸 이동 할 수 있습니다.");
         }
+    }
+
+    private void validatePalaceMove(Position start, Position destination) {
+        if (start.isInPalaceCornerOrCenter() && destination.isInPalace() & start.isDiagonal(destination)) {
+            validateSideMove(start, destination);
+        }
+    }
+
+    private void validateSideMove(Position start, Position destination) {
         if (pieceSide == Side.CHO && start.calculateYDistance(destination) == 1) {
             throw new IllegalArgumentException("졸은 뒤로 이동 할 수 없습니다.");
         }

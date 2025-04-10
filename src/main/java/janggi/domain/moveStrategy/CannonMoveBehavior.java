@@ -16,6 +16,7 @@ public class CannonMoveBehavior implements MoveBehavior {
         List<Position> positions = new ArrayList<>();
         getHorizontalMovePath(start, destination, positions);
         getVerticalMovePath(start, destination, positions);
+        getPalaceMovePath(start, destination, positions);
         return positions;
     }
 
@@ -28,29 +29,47 @@ public class CannonMoveBehavior implements MoveBehavior {
     }
 
     private void validateLinearMove(Position start, Position destination) {
-        if (!start.isLinearMove(destination)) {
+        if (!start.isLinearMove(destination)
+            && (!start.isInPalaceCorner() || !destination.isInPalace() || !start.isDiagonal(destination))) {
             throw new IllegalArgumentException("포는 상하좌우 직선으로만 움직일 수 있습니다.");
         }
     }
 
     private static void getHorizontalMovePath(Position start, Position destination, List<Position> positions) {
-        int xDistance = start.calculateXDistance(destination);
-        if (xDistance != 0) {
-            int stepX = (int) Math.signum(xDistance);
-            int steps = Math.abs(xDistance);
-            for (int i = 1; i <= steps; i++) {
-                positions.add(new Position(start.getX() + (i * stepX), start.getY()));
+        if (start.isHorizontalMove(destination)) {
+            int xDistance = start.calculateXDistance(destination);
+            if (xDistance != 0) {
+                int stepX = (int) Math.signum(xDistance);
+                int steps = Math.abs(xDistance);
+                for (int i = 1; i <= steps; i++) {
+                    positions.add(new Position(start.getX() + (i * stepX), start.getY()));
+                }
             }
         }
     }
 
     private static void getVerticalMovePath(Position start, Position destination, List<Position> positions) {
-        int yDistance = start.calculateYDistance(destination);
-        if (yDistance != 0) {
-            int stepY = (int) Math.signum(yDistance);
-            int steps = Math.abs(yDistance);
-            for (int i = 1; i <= steps; i++) {
-                positions.add(new Position(start.getX(), start.getY() + i * stepY));
+        if (start.isVerticalMove(destination)) {
+            int yDistance = start.calculateYDistance(destination);
+            if (yDistance != 0) {
+                int stepY = (int) Math.signum(yDistance);
+                int steps = Math.abs(yDistance);
+                for (int i = 1; i <= steps; i++) {
+                    positions.add(new Position(start.getX(), start.getY() + i * stepY));
+                }
+            }
+        }
+    }
+
+    private void getPalaceMovePath(Position start, Position destination, List<Position> positions) {
+        if (start.isInPalaceCorner() && destination.isInPalace() && start.isDiagonal(destination)) {
+            int xDistance = start.calculateXDistance(destination);
+            int yDistance = start.calculateYDistance(destination);
+            int xStep = (int) Math.signum(xDistance);
+            int yStep = (int) Math.signum(yDistance);
+
+            for (int i = 1; i <= Math.abs(xDistance); i++) {
+                positions.add(new Position(start.getX() + i * xStep, start.getY() + i * yStep));
             }
         }
     }

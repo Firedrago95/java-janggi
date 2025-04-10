@@ -65,6 +65,10 @@ public class Position {
         return PALACE_POINTS.contains(new Position(this.x, this.y));
     }
 
+    public boolean isInPalaceCornerOrCenter() {
+        return isInPalaceCenter() || isInPalaceCorner();
+    }
+
     public boolean isInPalaceCorner() {
         return (this.x == 4 || this.x == 6)
             && (this.y == 1 || this.y == 3 || this.y == 8 || this.y == 10);
@@ -84,6 +88,12 @@ public class Position {
         return (xDistance == 1 && yDistance == 0)
             || (xDistance == 0 && yDistance == 1)
             || (xDistance == 1 && yDistance == 1);
+    }
+
+    public boolean isDiagonal(Position destination) {
+        int xDistance = Math.abs(calculateXDistance(destination));
+        int yDistance = Math.abs(calculateYDistance(destination));
+        return xDistance == yDistance;
     }
 
     public int getY() {
