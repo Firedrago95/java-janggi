@@ -131,6 +131,7 @@ class CannonMoveBehaviorTest {
         Position destination = new Position(1, 6);
         Pieces pieceOnPath = new Pieces(
             Map.of(
+                new Position(1, 4), new Piece(Side.CHO, PieceType.ROOK, new RookMoveBehavior()),
                 new Position(1, 6), new Piece(Side.CHO, PieceType.PAWN, new PawnMoveBehavior(Side.CHO))
             )
         );
