@@ -82,6 +82,11 @@ public class Position {
         return isInPalace() && !isInPalaceCenter() && !isInPalaceCorner();
     }
 
+    public boolean isDiagonalMoveInPalace(Position destination) {
+        return this.isInPalaceCornerOrCenter()
+        && destination.isInPalace()
+        && this.isDiagonal(destination);}
+
     public boolean isOneStepMoveInPalace(Position destination) {
         int xDistance = Math.abs(calculateXDistance(destination));
         int yDistance = Math.abs(calculateYDistance(destination));

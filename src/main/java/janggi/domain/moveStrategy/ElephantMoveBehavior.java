@@ -9,6 +9,11 @@ import java.util.List;
 public class ElephantMoveBehavior implements MoveBehavior{
 
     @Override
+    public boolean supports(Position start, Position destination) {
+        return true;
+    }
+
+    @Override
     public List<Position> getPath(Position start, Position destination) {
         validateLinearMove(start, destination);
 

@@ -10,6 +10,11 @@ import java.util.List;
 public class CannonMoveBehavior implements MoveBehavior {
 
     @Override
+    public boolean supports(Position start, Position destination) {
+        return !start.isDiagonalMoveInPalace(destination);
+    }
+
+    @Override
     public List<Position> getPath(Position start, Position destination) {
         validateLinearMove(start, destination);
 

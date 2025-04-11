@@ -8,6 +8,11 @@ import java.util.List;
 
 public class PawnMoveBehavior implements MoveBehavior{
 
+    @Override
+    public boolean supports(Position start, Position destination) {
+        return !start.isOneStepMoveInPalace(destination);
+    }
+
     private final Side pieceSide;
 
     public PawnMoveBehavior(Side pieceSide) {

@@ -16,16 +16,14 @@ public class PawnPalaceMoveBehavior implements MoveBehavior {
     }
 
     @Override
-    public List<Position> getPath(Position start, Position destination) {
-        validatePalaceOneStep(start, destination);
-        validateSideMove(start, destination);
-        return List.of(destination);
+    public boolean supports(Position start, Position destination) {
+        return start.isOneStepMoveInPalace(destination);
     }
 
-    private void validatePalaceOneStep(Position start, Position destination) {
-        if (!start.isOneStepMoveInPalace(destination)) {
-            throw new IllegalArgumentException("졸은 궁성 안에서 한칸만 이동 가능합니다.");
-        }
+    @Override
+    public List<Position> getPath(Position start, Position destination) {
+        validateSideMove(start, destination);
+        return List.of(destination);
     }
 
     private void validateSideMove(Position start, Position destination) {

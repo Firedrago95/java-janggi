@@ -11,6 +11,11 @@ import java.util.List;
 public class CannonPalaceMoveBehavior implements MoveBehavior {
 
     @Override
+    public boolean supports(Position start, Position destination) {
+        return start.isDiagonalMoveInPalace(destination);
+    }
+
+    @Override
     public List<Position> getPath(Position start, Position destination) {
         List<Position> positions = new ArrayList<>();
         getPalaceMovePath(start, destination, positions);
@@ -18,15 +23,13 @@ public class CannonPalaceMoveBehavior implements MoveBehavior {
     }
 
     private void getPalaceMovePath(Position start, Position destination, List<Position> positions) {
-        if (start.isInPalaceCorner() && destination.isInPalace() && start.isDiagonal(destination)) {
-            int xDistance = start.calculateXDistance(destination);
-            int yDistance = start.calculateYDistance(destination);
-            int xStep = (int) Math.signum(xDistance);
-            int yStep = (int) Math.signum(yDistance);
+        int xDistance = start.calculateXDistance(destination);
+        int yDistance = start.calculateYDistance(destination);
+        int xStep = (int) Math.signum(xDistance);
+        int yStep = (int) Math.signum(yDistance);
 
-            for (int i = 1; i <= Math.abs(xDistance); i++) {
-                positions.add(new Position(start.getX() + i * xStep, start.getY() + i * yStep));
-            }
+        for (int i = 1; i <= Math.abs(xDistance); i++) {
+            positions.add(new Position(start.getX() + i * xStep, start.getY() + i * yStep));
         }
     }
 

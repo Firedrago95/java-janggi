@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface MoveBehavior {
 
+    boolean supports(Position start, Position destination);
+
     List<Position> getPath(Position start, Position destination);
 
     boolean canMove(Pieces piecesOnPath, Position destination, Side pieceSide);

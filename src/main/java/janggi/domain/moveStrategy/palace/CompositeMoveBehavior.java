@@ -18,8 +18,19 @@ public class CompositeMoveBehavior implements MoveBehavior {
     }
 
     @Override
+    public boolean supports(Position start, Position destination) {
+        for (MoveBehavior moveBehavior : moveBehaviors) {
+            if (moveBehavior.supports(start, destination)) {
+                useMoveBehavior = moveBehavior;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public List<Position> getPath(Position start, Position destination) {
-        if (start.isInPalaceCornerOrCenter() && destination.isInPalace() && start.isDiagonal(destination)) {
+        if (supports(start, destination)) {
             useMoveBehavior = moveBehaviors.getLast();
             return useMoveBehavior.getPath(start, destination);
         }
